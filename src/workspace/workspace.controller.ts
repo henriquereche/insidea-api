@@ -23,7 +23,7 @@ export class WorkspaceController {
     }
 
     @Put(':id')
-    public put(@Param('id') id: string, @Body() model: UpdateWorkspace) {
-        this.workpaceModel.replaceOne({ _id: id }, model);
+    public put(@Param('id') id: string, @Body() model: UpdateWorkspace): Promise<Workspace> {
+        return this.workpaceModel.replaceOne({ _id: id }, model).exec();
     }
 }

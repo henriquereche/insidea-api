@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { WorkspaceModule } from './workspace/workspace.module';
+import { AreaModule } from './area/area.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { WorkspaceModule } from './workspace/workspace.module';
       }),
     }),
     WorkspaceModule,
+    AreaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
