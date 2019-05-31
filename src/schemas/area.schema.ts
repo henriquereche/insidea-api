@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { ObjectID } from 'bson';
+import { ObjectID } from 'mongodb';
 
 export const AreaSchema = new Schema({
     name: { type: String, required: true },

@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Workspace } from './interfaces/workspace.interface';
 import { UpdateWorkspace } from './models/update-workspace';
 import { Area } from './interfaces/area.interface';
+import { ObjectID } from 'mongodb';
 
 @Controller('workspaces')
 export class WorkspaceController {
@@ -29,17 +30,22 @@ export class WorkspaceController {
     }
 
     @Put(':id')
-    public put(@Param('id') id: string, @Body() model: UpdateWorkspace): Promise<Workspace> {
-        return this.workpaceModel.replaceOne({ _id: id }, model).exec();
+    public async put(@Param('id') id: string, @Body() model: UpdateWorkspace): Promise<Workspace> {
+        return this.workpaceModel.findByIdAndUpdate(id, model).exec();
     }
 
     @Get(':id/areas')
     public getAreas(@Param('id') id: string): Promise<Area[]> {
-        return this.areaModel.find({ workspace_id: id }).exec();
+        return this.areaModel.find({
+            workspace_id: new ObjectID(id),
+        }).exec();
     }
 
     @Get(':id/areas/:areaId')
     public getAreaById(@Param('id') id: string, @Param('areaId') areaId: string): Promise<Area> {
-        return this.areaModel.findOne({ workspace_id: id, _id: areaId }).exec();
+        return this.areaModel.findOne({
+            workspace_id: new ObjectID(id),
+            _id: new ObjectID(areaId),
+        }).exec();
     }
 }

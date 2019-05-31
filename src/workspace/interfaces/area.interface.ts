@@ -1,5 +1,5 @@
-import { ObjectID } from 'bson';
 import { Document } from 'mongoose';
+import { ObjectID } from 'mongodb';
 
 export interface Area extends Document {
     name: string;
