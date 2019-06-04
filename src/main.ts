@@ -26,6 +26,7 @@ async function bootstrap() {
         .setTitle('Insidea API')
         .setVersion('1.0')
         .setBasePath(apiPrefix)
+        .setSchemes('https', 'http')
         .build(),
     ),
   );
