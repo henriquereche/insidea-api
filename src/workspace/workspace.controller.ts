@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Put, Body, Query, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param, Put, Body, Query } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Workspace } from './interfaces/workspace.interface';
